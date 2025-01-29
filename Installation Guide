@@ -1,0 +1,135 @@
+# Installation Guide
+
+## 1. Prometheus – Data Collection and Alerting
+### Installation on Linux
+1. Download Prometheus:
+   ```bash
+   wget https://github.com/prometheus/prometheus/releases/latest/download/prometheus-linux-amd64.tar.gz
+   ```
+2. Extract the archive:
+   ```bash
+   tar -xvf prometheus-linux-amd64.tar.gz
+   cd prometheus-linux-amd64
+   ```
+3. Run Prometheus:
+   ```bash
+   ./prometheus --config.file=prometheus.yml
+   ```
+
+### Installation on Docker
+```bash
+  docker run -d --name=prometheus -p 9090:9090 prom/prometheus
+```
+
+## 2. Grafana – Interactive Dashboards
+### Installation on Linux
+1. Add Grafana repository:
+   ```bash
+   sudo apt-get install -y software-properties-common
+   sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+   ```
+2. Install Grafana:
+   ```bash
+   sudo apt-get update && sudo apt-get install grafana
+   ```
+3. Start Grafana:
+   ```bash
+   sudo systemctl start grafana-server
+   ```
+
+### Installation on Docker
+```bash
+  docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+
+## 3. SNMP – Device Monitoring
+### Installation on Linux
+1. Install SNMP tools:
+   ```bash
+   sudo apt-get install snmp snmpd
+   ```
+2. Configure SNMP:
+   ```bash
+   sudo nano /etc/snmp/snmpd.conf
+   ```
+   Modify configuration as needed.
+3. Restart SNMP service:
+   ```bash
+   sudo systemctl restart snmpd
+   ```
+
+### Installation on Docker
+```bash
+  docker run -d --name=snmpd -p 161:161/udp --privileged snmpd
+```
+
+## 4. WireGuard – VPN for Secure Access
+### Installation on Linux
+1. Install WireGuard:
+   ```bash
+   sudo apt-get install wireguard
+   ```
+2. Generate Keys:
+   ```bash
+   wg genkey | tee privatekey | wg pubkey > publickey
+   ```
+3. Configure WireGuard:
+   ```bash
+   sudo nano /etc/wireguard/wg0.conf
+   ```
+4. Start WireGuard:
+   ```bash
+   sudo systemctl start wg-quick@wg0
+   ```
+
+### Installation on Docker
+```bash
+  docker run -d --name=wireguard --cap-add=NET_ADMIN -p 51820:51820/udp linuxserver/wireguard
+```
+
+## 5. Docker – Deployment and Scalability
+### Installation on Linux
+1. Install dependencies:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y ca-certificates curl gnupg
+   ```
+2. Add Docker repository:
+   ```bash
+   sudo mkdir -m 0755 -p /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
+   ```
+3. Install Docker:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+   ```
+4. Start Docker:
+   ```bash
+   sudo systemctl start docker
+   ```
+
+## Upload to Git Repository
+1. Initialize a new Git repository:
+   ```bash
+   git init
+   ```
+2. Add files:
+   ```bash
+   git add .
+   ```
+3. Commit changes:
+   ```bash
+   git commit -m "Added installation guide"
+   ```
+4. Add remote repository:
+   ```bash
+   git remote add origin https://github.com/yourusername/your-repo.git
+   ```
+5. Push to GitHub:
+   ```bash
+   git push -u origin main
+   ```
+
+Your installation guide is now uploaded to GitHub!
+
