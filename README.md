@@ -16,7 +16,7 @@ This repository contains a **comprehensive network monitoring and management sys
 - **Grafana** – Interactive dashboards  
 - **SNMP** – Device monitoring  
 - **WireGuard** – VPN for secure access  
-- **Docker & Kubernetes** – Deployment and scalability  
+- **Docker** – Deployment and scalability  
 
 ## Prerequisites
 Before setting up the system, ensure you have the following installed:
