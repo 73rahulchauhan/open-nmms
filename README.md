@@ -80,6 +80,6 @@ docker-compose down
 🚀 Automated configuration via Ansible  
 
 ---
-**Contributors**: [Your Name](https://github.com/your-username)  
-**License**: MIT  
+**Contributors**: [Rahul Chauhan](https://github.com/73rahulchauhan)  
+
 
